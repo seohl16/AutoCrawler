@@ -115,22 +115,22 @@ class CollectLinks:
 
         elem = self.browser.find_element_by_tag_name("body")
 
-        for i in range(60):
+        for i in range(2):
             elem.send_keys(Keys.PAGE_DOWN)
             time.sleep(0.2)
 
-        try:
-            # You may need to change this. Because google image changes rapidly.
-            # btn_more = self.browser.find_element(By.XPATH, '//input[@value="결과 더보기"]')
-            # self.wait_and_click('//input[@id="smb"]')
-            self.wait_and_click('//input[@type="button"]')
+        # try:
+        #     # You may need to change this. Because google image changes rapidly.
+        #     # btn_more = self.browser.find_element(By.XPATH, '//input[@value="결과 더보기"]')
+        #     # self.wait_and_click('//input[@id="smb"]')
+        #     self.wait_and_click('//input[@type="button"]')
 
-            for i in range(60):
-                elem.send_keys(Keys.PAGE_DOWN)
-                time.sleep(0.2)
+        #     for i in range(2):
+        #         elem.send_keys(Keys.PAGE_DOWN)
+        #         time.sleep(0.2)
 
-        except ElementNotVisibleException:
-            pass
+        # except ElementNotVisibleException:
+        #     pass
 
         photo_grid_boxes = self.browser.find_elements(By.XPATH, '//div[@class="bRMDJf islir"]')
 
@@ -239,6 +239,8 @@ class CollectLinks:
                     links.append(src)
                     print('%d: %s' % (count, src))
                     count += 1
+                    if count > 7:
+                        break 
 
             except StaleElementReferenceException:
                 # print('[Expected Exception - StaleElementReferenceException]')

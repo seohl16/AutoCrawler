@@ -1,3 +1,15 @@
+Forked from AutoCrawler 
+회사 로고 프린트용으로 개조 
+
+! default chagned
+naver = false 
+--limit 1 
+
+! keyword search + ' 로고'
+
+! google_full 
+count > 7 break 
+
 # AutoCrawler
 Google, Naver multiprocess image crawler (High Quality & Speed & Customizable)
 

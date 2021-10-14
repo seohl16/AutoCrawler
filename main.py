@@ -52,8 +52,8 @@ class Sites:
 
 
 class AutoCrawler:
-    def __init__(self, skip_already_exist=True, n_threads=4, do_google=True, do_naver=True, download_path='download',
-                 full_resolution=False, face=False, no_gui=False, limit=0, proxy_list=None):
+    def __init__(self, skip_already_exist=True, n_threads=4, do_google=True, do_naver=False, download_path='download',
+                 full_resolution=False, face=False, no_gui=False, limit=1, proxy_list=None):
         """
         :param skip_already_exist: Skips keyword already downloaded before. This is needed when re-downloading.
         :param n_threads: Number of threads to download.
@@ -141,7 +141,9 @@ class AutoCrawler:
 
         # re-save sorted keywords
         with open(keywords_file, 'w+', encoding='utf-8') as f:
-            for keyword in keywords:
+            # for keyword in keywords:
+            for i, keyword in enumerate(keywords):
+                keywords[i] = keyword + ' 로고'
                 f.write('{}\n'.format(keyword))
 
         return keywords
@@ -351,7 +353,7 @@ if __name__ == '__main__':
                         help='No GUI mode. Acceleration for full_resolution mode. '
                              'But unstable on thumbnail mode. '
                              'Default: "auto" - false if full=false, true if full=true')
-    parser.add_argument('--limit', type=int, default=0,
+    parser.add_argument('--limit', type=int, default=1,
                         help='Maximum count of images to download per site. (0: infinite)')
     parser.add_argument('--proxy-list', type=str, default='',
                         help='The comma separated proxy list like: "socks://127.0.0.1:1080,http://127.0.0.1:1081". '
@@ -361,7 +363,7 @@ if __name__ == '__main__':
     _skip = False if str(args.skip).lower() == 'false' else True
     _threads = args.threads
     _google = False if str(args.google).lower() == 'false' else True
-    _naver = False if str(args.naver).lower() == 'false' else True
+    _naver = False if str(args.naver).lower() == 'false' else False
     _full = False if str(args.full).lower() == 'false' else True
     _face = False if str(args.face).lower() == 'false' else True
     _limit = int(args.limit)
