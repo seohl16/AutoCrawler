@@ -143,7 +143,8 @@ class AutoCrawler:
         with open(keywords_file, 'w+', encoding='utf-8') as f:
             # for keyword in keywords:
             for i, keyword in enumerate(keywords):
-                keywords[i] = keyword + ' 로고'
+                first_word = keyword.split()[0]
+                keywords[i] = first_word + ' 로고'
                 f.write('{}\n'.format(keyword))
 
         return keywords
@@ -166,7 +167,9 @@ class AutoCrawler:
         return data
 
     def download_images(self, keyword, links, site_name, max_count=0):
-        self.make_dir('{}/{}'.format(self.download_path, keyword.replace('"', '')))
+        keyword = keyword.replace("", '')
+        keyword = keyword.replace(' 로고', '')
+        self.make_dir('{}/{}'.format(self.download_path, keyword))
         total = len(links)
         success_count = 0
 
