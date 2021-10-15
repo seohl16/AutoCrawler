@@ -136,15 +136,13 @@ class AutoCrawler:
             lines = text.split('\n')
             lines = filter(lambda x: x != '' and x is not None, lines)
             keywords = sorted(set(lines))
-
+        
         print('{} keywords found: {}'.format(len(keywords), keywords))
 
         # re-save sorted keywords
         with open(keywords_file, 'w+', encoding='utf-8') as f:
             # for keyword in keywords:
             for i, keyword in enumerate(keywords):
-                first_word = keyword.split()[0]
-                keywords[i] = first_word + ' 로고'
                 f.write('{}\n'.format(keyword))
 
         return keywords
@@ -166,9 +164,46 @@ class AutoCrawler:
         data = base64.decodebytes(bytes(encoded, encoding='utf-8'))
         return data
 
+    @staticmethod
+    def has_transparency(link, path):
+        import urllib.request
+        from PIL import Image
+        file = urllib.request.urlopen(link)
+        with Image.open(file) as img:
+            if img.mode == "P":
+                transparent = img.info.get("transparency", -1)
+                for _, index in img.getcolors():
+                    if index == transparent:
+                        return True
+            elif img.mode == "RGBA":
+                extrema = img.getextrema()
+                if extrema[3][0] < 255:
+                    return True
+            return False
+        
+    @staticmethod
+    def getsizes(uri):
+        import urllib.request
+        from PIL import ImageFile
+        # get file size *and* image size (None if not known)
+        file = urllib.request.urlopen(uri)
+        size = file.headers.get("content-length")
+        if size: size = int(size)
+        p = ImageFile.Parser()
+        while 1:
+            data = file.read(1024)
+            if not data:
+                break
+            p.feed(data)
+            if p.image:
+                return size, p.image.size
+                break
+        file.close()
+        return size, None
+
+
     def download_images(self, keyword, links, site_name, max_count=0):
         keyword = keyword.replace("", '')
-        keyword = keyword.replace(' 로고', '')
         self.make_dir('{}/{}'.format(self.download_path, keyword))
         total = len(links)
         success_count = 0
@@ -196,11 +231,18 @@ class AutoCrawler:
                     ext = self.get_extension_from_link(link)
                     is_base64 = False
 
-                no_ext_path = '{}/{}/{}_{}'.format(self.download_path.replace('"', ''), keyword, site_name,
-                                                   str(index).zfill(4))
+                no_ext_path = '{}/{}/{}_{}'.format(self.download_path.replace('"', ''), keyword, "g",
+                                                   str(success_count).zfill(4))
                 path = no_ext_path + '.' + ext
+                getsize = self.getsizes(link)
+                if (getsize[1] and getsize[1][0] < 200 and getsize[1][0] < getsize[1][1]): # if width < height
+                    print("get_size width is shorter than height")
+                    continue 
+                if (self.has_transparency(link, path)):
+                    print(str(index).zfill(2) + " has_transparency")
+                    continue
+                    
                 self.save_object_to_file(response, path, is_base64=is_base64)
-
                 success_count += 1
                 del response
 
@@ -234,18 +276,18 @@ class AutoCrawler:
 
         try:
             print('Collecting links... {} from {}'.format(keyword, site_name))
-
+            newkeyword = keyword.split()[0] + ' 로고'
             if site_code == Sites.GOOGLE:
-                links = collect.google(keyword, add_url)
+                links = collect.google(newkeyword, add_url)
 
             elif site_code == Sites.NAVER:
-                links = collect.naver(keyword, add_url)
+                links = collect.naver(newkeyword, add_url)
 
             elif site_code == Sites.GOOGLE_FULL:
-                links = collect.google_full(keyword, add_url)
+                links = collect.google_full(newkeyword, add_url)
 
             elif site_code == Sites.NAVER_FULL:
-                links = collect.naver_full(keyword, add_url)
+                links = collect.naver_full(newkeyword, add_url)
 
             else:
                 print('Invalid Site Code')
@@ -275,7 +317,8 @@ class AutoCrawler:
             if google_done and naver_done and self.skip:
                 print('Skipping done task {}'.format(dir_name))
                 continue
-
+            
+            # keyword = keyword + ' 로고'
             if self.do_google and not google_done:
                 if self.full_resolution:
                     tasks.append([keyword, Sites.GOOGLE_FULL])
