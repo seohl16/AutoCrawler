@@ -1,0 +1,305 @@
+{
+  "message": "success  get names",
+  "data": [
+    {
+      "company_name": "넷마블컴퍼니"
+    },
+    {
+      "company_name": "카카오 판교오피스"
+    },
+    {
+      "company_name": "네이버 본사"
+    },
+    {
+      "company_name": "크래프톤"
+    },
+    {
+      "company_name": "당근마켓"
+    },
+    {
+      "company_name": "티몬"
+    },
+    {
+      "company_name": "중고나라"
+    },
+    {
+      "company_name": "마켓컬리"
+    },
+    {
+      "company_name": "직방"
+    },
+    {
+      "company_name": "탤런트엑스"
+    },
+    {
+      "company_name": "아프리카티비"
+    },
+    {
+      "company_name": "무신사 본사"
+    },
+    {
+      "company_name": "위메프"
+    },
+    {
+      "company_name": "쿠팡 본사"
+    },
+    {
+      "company_name": "한국마이크로소프트"
+    },
+    {
+      "company_name": "이노베이션아카데미"
+    },
+    {
+      "company_name": "딜리버리히어로코리아"
+    },
+    {
+      "company_name": "트리노드 본사"
+    },
+    {
+      "company_name": "모두싸인 서울"
+    },
+    {
+      "company_name": "여기어때컴퍼니"
+    },
+    {
+      "company_name": "우아한형제들"
+    },
+    {
+      "company_name": "파수"
+    },
+    {
+      "company_name": "곰앤컴퍼니"
+    },
+    {
+      "company_name": "메가존클라우드"
+    },
+    {
+      "company_name": "센드버드코리아"
+    },
+    {
+      "company_name": "오스템임플란트"
+    },
+    {
+      "company_name": "한국콩스버그마리타임"
+    },
+    {
+      "company_name": "코오롱베니트 본사"
+    },
+    {
+      "company_name": "비엔케이시스템"
+    },
+    {
+      "company_name": "하나금융티아이"
+    },
+    {
+      "company_name": "시높시스코리아"
+    },
+    {
+      "company_name": "팅크웨어"
+    },
+    {
+      "company_name": "대교CNS"
+    },
+    {
+      "company_name": "올포랜드 서울사무실"
+    },
+    {
+      "company_name": "안랩 본사"
+    },
+    {
+      "company_name": "엔에이치엔서비스"
+    },
+    {
+      "company_name": "다날"
+    },
+    {
+      "company_name": "타임게이트"
+    },
+    {
+      "company_name": "이베이코리아"
+    },
+    {
+      "company_name": "아이마켓코리아"
+    },
+    {
+      "company_name": "NS홈쇼핑"
+    },
+    {
+      "company_name": "롯데홈쇼핑 서울본사"
+    },
+    {
+      "company_name": "현대홈쇼핑"
+    },
+    {
+      "company_name": "11번가"
+    },
+    {
+      "company_name": "메디칼스탠다드"
+    },
+    {
+      "company_name": "큐브리드"
+    },
+    {
+      "company_name": "빗썸코리아"
+    },
+    {
+      "company_name": "YES24"
+    },
+    {
+      "company_name": "인터파크 본사"
+    },
+    {
+      "company_name": "네오위즈"
+    },
+    {
+      "company_name": "네오플"
+    },
+    {
+      "company_name": "게임빌컴투스플랫폼"
+    },
+    {
+      "company_name": "넥슨코리아 본사"
+    },
+    {
+      "company_name": "엔씨소프트 R&D센터"
+    },
+    {
+      "company_name": "스마일게이트 엔터테인먼트"
+    },
+    {
+      "company_name": "비바리퍼블리카"
+    },
+    {
+      "company_name": "카카오게임즈"
+    },
+    {
+      "company_name": "카카오뱅크"
+    },
+    {
+      "company_name": "뱅크샐러드"
+    },
+    {
+      "company_name": "카카오페이"
+    },
+    {
+      "company_name": "KB국민은행 여의도본점"
+    },
+    {
+      "company_name": "우리은행 본점"
+    },
+    {
+      "company_name": "신한은행 본점"
+    },
+    {
+      "company_name": "파운트"
+    },
+    {
+      "company_name": "BC카드 본사"
+    },
+    {
+      "company_name": "코그"
+    },
+    {
+      "company_name": "펄어비스 안양오피스"
+    },
+    {
+      "company_name": "하이브"
+    },
+    {
+      "company_name": "야놀자 본사"
+    },
+    {
+      "company_name": "왓챠"
+    },
+    {
+      "company_name": "웹젠"
+    },
+    {
+      "company_name": "티빙"
+    },
+    {
+      "company_name": "네이버웹툰"
+    },
+    {
+      "company_name": "홈앤쇼핑"
+    },
+    {
+      "company_name": "스테이션3"
+    },
+    {
+      "company_name": "라인플러스"
+    },
+    {
+      "company_name": "카카오모빌리티"
+    },
+    {
+      "company_name": "니도컴퍼니"
+    },
+    {
+      "company_name": "쏘카존 제주스테이션"
+    },
+    {
+      "company_name": "한글과컴퓨터"
+    },
+    {
+      "company_name": "브이씨엔씨"
+    },
+    {
+      "company_name": "휴맥스 본사"
+    },
+    {
+      "company_name": "퓨전소프트"
+    },
+    {
+      "company_name": "dgb데이터시스템"
+    },
+    {
+      "company_name": "한페이시스"
+    },
+    {
+      "company_name": "가비아"
+    },
+    {
+      "company_name": "네이버클라우드 판교오피스"
+    },
+    {
+      "company_name": "SK네트웍스"
+    },
+    {
+      "company_name": "KT 본사"
+    },
+    {
+      "company_name": "KTCS염창사옥"
+    },
+    {
+      "company_name": "인컴즈"
+    },
+    {
+      "company_name": "마이비"
+    },
+    {
+      "company_name": "가온미디어"
+    },
+    {
+      "company_name": "에스케이플래닛 본사"
+    },
+    {
+      "company_name": "원스토어"
+    },
+    {
+      "company_name": "에스에스지닷컴"
+    },
+    {
+      "company_name": "홈플러스 본사"
+    },
+    {
+      "company_name": "번개장터"
+    },
+    {
+      "company_name": "KG이니시스"
+    },
+    {
+      "company_name": "케이티커머스"
+    }
+  ]
+}
