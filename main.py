@@ -25,6 +25,7 @@ import base64
 from pathlib import Path
 import random
 
+from PIL import Image
 
 class Sites:
     GOOGLE = 1
@@ -235,6 +236,7 @@ class AutoCrawler:
                                                    str(success_count).zfill(4))
                 path = no_ext_path + '.' + ext
                 getsize = self.getsizes(link)
+                # print(getsize)
                 if (getsize[1] and getsize[1][0] < 200 and getsize[1][0] < getsize[1][1]): # if width < height
                     print("get_size width is shorter than height")
                     continue 
@@ -243,6 +245,10 @@ class AutoCrawler:
                     continue
                     
                 self.save_object_to_file(response, path, is_base64=is_base64)
+                im = Image.open(path)
+                # im.thumbnail((250,250))
+                rgb_im = im.convert('RGB')
+                rgb_im.save(no_ext_path+'.'+'jpg')
                 success_count += 1
                 del response
 
