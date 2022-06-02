@@ -1,14 +1,10 @@
-Forked from AutoCrawler 
-회사 로고 프린트용으로 개조 
+# Forked from AutoCrawler 
+회사 로고 프린트용으로 개조 -> /workmap_code
 
-! default chagned
-naver = false 
---limit 1 
-
-! keyword search + ' 로고'
-
-! google_full 
-count > 7 break 
+### changed options
+- naver = false 
+- face = true
+- google_full count > 7 break 
 
 # AutoCrawler
 Google, Naver multiprocess image crawler (High Quality & Speed & Customizable)
@@ -17,7 +13,7 @@ Google, Naver multiprocess image crawler (High Quality & Speed & Customizable)
 
 # How to use
 
-1. Install Chrome
+1. Download ChromeDriver from [ChromeDrvier Website](https://chromedriver.chromium.org/downloads)
 
 2. pip install -r requirements.txt
 

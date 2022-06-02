@@ -102,8 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+workmap
 
 download
 100download
 olddownload
 .idea
+*zip
+save

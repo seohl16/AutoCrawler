@@ -282,18 +282,17 @@ class AutoCrawler:
 
         try:
             print('Collecting links... {} from {}'.format(keyword, site_name))
-            newkeyword = keyword.split()[0] + ' 로고'
             if site_code == Sites.GOOGLE:
-                links = collect.google(newkeyword, add_url)
+                links = collect.google(keyword, add_url)
 
             elif site_code == Sites.NAVER:
-                links = collect.naver(newkeyword, add_url)
+                links = collect.naver(keyword, add_url)
 
             elif site_code == Sites.GOOGLE_FULL:
-                links = collect.google_full(newkeyword, add_url)
+                links = collect.google_full(keyword, add_url)
 
             elif site_code == Sites.NAVER_FULL:
-                links = collect.naver_full(newkeyword, add_url)
+                links = collect.naver_full(keyword, add_url)
 
             else:
                 print('Invalid Site Code')
@@ -324,7 +323,6 @@ class AutoCrawler:
                 print('Skipping done task {}'.format(dir_name))
                 continue
             
-            # keyword = keyword + ' 로고'
             if self.do_google and not google_done:
                 if self.full_resolution:
                     tasks.append([keyword, Sites.GOOGLE_FULL])
@@ -400,12 +398,12 @@ if __name__ == '__main__':
     parser.add_argument('--naver', type=str, default='true', help='Download from naver.com (boolean)')
     parser.add_argument('--full', type=str, default='false',
                         help='Download full resolution image instead of thumbnails (slow)')
-    parser.add_argument('--face', type=str, default='false', help='Face search mode')
+    parser.add_argument('--face', type=str, default='true', help='Face search mode')
     parser.add_argument('--no_gui', type=str, default='auto',
                         help='No GUI mode. Acceleration for full_resolution mode. '
                              'But unstable on thumbnail mode. '
                              'Default: "auto" - false if full=false, true if full=true')
-    parser.add_argument('--limit', type=int, default=1,
+    parser.add_argument('--limit', type=int, default=10,
                         help='Maximum count of images to download per site. (0: infinite)')
     parser.add_argument('--proxy-list', type=str, default='',
                         help='The comma separated proxy list like: "socks://127.0.0.1:1080,http://127.0.0.1:1081". '
